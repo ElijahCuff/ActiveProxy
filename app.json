@@ -1,0 +1,6 @@
+{
+  "name": "ActiveProxy",
+  "description": "Automatic Active HTTP Proxy Finder",
+  "repository": "https://github.com/WokeWorld/PHPApocalypse",
+  "keywords": ["php script", "php proxy", "proxy"]
+}
