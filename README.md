@@ -11,4 +11,4 @@ Create a FREE account first if you do not yet have one:
 https://signup.heroku.com/    
    
 #### Example Usage        
-`https://autoproxy.herokuapp.com/?type=socks4`       
+`https://acpro.herokuapp.com`       
