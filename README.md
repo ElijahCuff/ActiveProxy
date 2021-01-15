@@ -1,5 +1,5 @@
 # Active Proxy©
-Active Proxy© is a proxy load bot that uses a list of online proxies to start a randoy user agent load on a specified domain, after a successful proxy is found - it will be returned in json format for your software to use.
+Active Proxy© is a proxy load bot that uses a list of online proxies to start a random user agent load on a specified domain, after a successful proxy is found - it will be returned in json format for your software to use.
     
 ## Installation    
 * Add the 2 files ( index & agents ) to your php server like heroku or free hosting provider    
