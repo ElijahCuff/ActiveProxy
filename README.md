@@ -4,6 +4,7 @@ Active Proxy© is a proxy load bot that uses a list of online proxies to start a
 ## Installation    
 * Add the 2 files ( index & agents ) to your php server like heroku or free hosting provider    
 * Open index.php with specific options
+* Edit Request Parameters to change Type, default is Socks4 Proxy Type.
      
 ### Heroku Quick Deployment     
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)        
