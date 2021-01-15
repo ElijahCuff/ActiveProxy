@@ -61,7 +61,7 @@ curl_close($ch);
 return $page;
 }
 
-function getRandomProxy($type)
+function getRandomProxy()
 {
   $proxies = file('https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=2000&country=all&ssl=all&anonymity=all');
  return trim($proxies[array_rand($proxies,1)]);
