@@ -1,15 +1,10 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-
-
-// Check if UTF-8 response requested
 header("Content-Type: application/json; charset=UTF-8");
 
 $rounds = 1;
 $proxy = getRandomProxy();
 
-
-// Get the url to load through the proxy
 {
   // Url Provided, continue loading rounds
   $url = "http://duckduckgo.com";
@@ -34,8 +29,11 @@ $proxy = getRandomProxy();
 
  // finished round's, response
   http_response_code(200);
- $response = array(["proxy"=> $testProx]);
-  echo json_encode($response,JSON_PRETTYPRINT);
+ $proxybits = explode(":",$testProx);
+ $response = array(["proxy"=> $proxybits[0],
+                                  "port" => $proxybits[1]
+                                   ]);
+  echo json_encode($response, JSON_PRETTY_PRINT);
   exit;
 }
 
@@ -48,6 +46,7 @@ $url = ($url);
 $agent = getRandomAgent();
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, trim($proxy));
+curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
 curl_setopt($ch, CURLOPT_URL, $url);
 $ref = "http://google.com";
 curl_setopt($ch, CURLOPT_REFERER, $ref);
@@ -63,7 +62,7 @@ return $page;
 
 function getRandomProxy()
 {
-  $proxies = file('https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=2000&country=all&ssl=all&anonymity=all');
+  $proxies = file('https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=2000&country=all&ssl=all&anonymity=all');
  return trim($proxies[array_rand($proxies,1)]);
 }
 
