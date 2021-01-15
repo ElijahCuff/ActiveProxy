@@ -30,7 +30,8 @@ $proxy = getRandomProxy();
  // finished round's, response
   http_response_code(200);
  $proxybits = explode(":",$testProx);
- $response = array(["proxy"=> $proxybits[0],
+ $response = array(["type" => "socks4",
+                                  "proxy"=> $proxybits[0],
                                   "port" => $proxybits[1],
                                   "agent" => $agent ]);
   echo json_encode($response, JSON_PRETTY_PRINT);
