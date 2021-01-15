@@ -1,27 +1,12 @@
 <?php
-
-// Check if Cross-Origin is Requested
-if (hasParam('crossOrigin'))
-{
 header("Access-Control-Allow-Origin: *");
-}
 
 
 // Check if UTF-8 response requested
-if (hasParam('format'))
-{
-if ($_GET['format'] == "utf-8")
-{
 header("Content-Type: application/json; charset=UTF-8");
-}
-}
 
-
-// Check Total Load on Good Proxy Rounds
 $rounds = 1;
-
-// Check if requested specific proxy
-$proxy = getRandomProxy("socks4");
+$proxy = getRandomProxy();
 
 
 // Get the url to load through the proxy
@@ -65,11 +50,6 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, trim($proxy));
 curl_setopt($ch, CURLOPT_URL, $url);
 $ref = "http://google.com";
-if (hasParam('referer'))
-{
-$ref = $_GET['referer'];
-}
-
 curl_setopt($ch, CURLOPT_REFERER, $ref);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -83,9 +63,7 @@ return $page;
 
 function getRandomProxy($type)
 {
-  $proxies = file('https://api.proxyscrape.com/?request=getproxies&proxytype='.$type.'&timeout=2000&country=all&ssl=all&anonymity=all');
-
-
+  $proxies = file('https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=2000&country=all&ssl=all&anonymity=all');
  return trim($proxies[array_rand($proxies,1)]);
 }
 
