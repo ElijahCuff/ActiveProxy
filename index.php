@@ -1,7 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-
+$agent = getRandomAgent();
 $rounds = 1;
 $proxy = getRandomProxy();
 
@@ -31,8 +31,8 @@ $proxy = getRandomProxy();
   http_response_code(200);
  $proxybits = explode(":",$testProx);
  $response = array(["proxy"=> $proxybits[0],
-                                  "port" => $proxybits[1]
-                                   ]);
+                                  "port" => $proxybits[1],
+                                  "agent" => $agent ]);
   echo json_encode($response, JSON_PRETTY_PRINT);
   exit;
 }
@@ -43,7 +43,7 @@ $proxy = getRandomProxy();
 // functions for program
 function proxy($proxy, $url, $dur = 1000){
 $url = ($url);
-$agent = getRandomAgent();
+global $agent;
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, trim($proxy));
 curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
