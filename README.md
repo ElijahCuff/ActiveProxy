@@ -10,5 +10,5 @@ Active Proxy© is a proxy load bot that uses a list of online proxies to start a
 Create a FREE account first if you do not yet have one:  
 https://signup.heroku.com/    
    
-#### Example Usage        
-`https://acpro.herokuapp.com`       
+#### Example  
+https://acpro.herokuapp.com   
