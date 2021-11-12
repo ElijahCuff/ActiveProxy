@@ -8,6 +8,10 @@ $proxy = getRandomProxy();
 {
   // Url Provided, continue loading rounds
   $url = "http://duckduckgo.com";
+  if(hasParam("url"))
+   {
+      $url = htmlspecialchars(urldecode($_REQUEST["url"]));
+   }
   $result = proxy($proxy, $url);
 
   $testProx = "";
@@ -42,6 +46,11 @@ $proxy = getRandomProxy();
 
 
 // functions for program
+function hasParam($param)
+{
+   return array_key_exists($param, $_REQUEST);
+}
+
 function proxy($proxy, $url, $dur = 1000){
 $url = ($url);
 global $agent;
